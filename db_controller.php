@@ -1,14 +1,15 @@
 <?php
-    // DB server connection info
-    $conn_address = "127.0.0.1:3306";
-    $conn_username = "root";
-    $conn_password = "";
+// DB connection info
+$host = "localhost";
+$username = "practice_user";
+$password = "password123";
+$database = "practice_db";
 
-    // Try connecting to the DB server, redirects to maintenance page if fails
-    try {
-        $conn = new mysqli(hostname: $conn_address, username: $conn_username, password: $conn_password);
-    } catch (Exception $e){
-        header(header: 'Location: maintenance.php');
-        die();
-    }
+// Connect to database
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
 ?>
